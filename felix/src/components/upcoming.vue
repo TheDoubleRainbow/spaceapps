@@ -33,15 +33,13 @@
 </template>
 
 <style lang="scss">
-    .nav{
-        background: #131313;
-        height: 4em;
-        padding: 0.8em;
+    .upcoming{
         color: white;
+        margin: calc(50vh - 8em) 0 3em 0;
     }
-    .nav__name{
-        font-size: 1.5em;
+    .upcoming__label{
         font-weight: 300;
+        font-size: 1.8em;
     }
     .upcoming__block__footer, .upcoming__block_top{
         display: flex;
@@ -66,14 +64,11 @@
         padding: 0 2.5em;
         border-radius: 10px;
     }
-    .nav__img{
-        height: 1.6em;
-        width: 1.6em;
+    .upcoming__block__content{
+        padding: 3.15em 0 3.15em 0;
     }
-    .nav__name span{
-        position: relative;
-        top: -0.35em;
-        left: 0.6em;
+    .upcoming__block_name{
+        font-size: 1.5em;
     }
     .upcoming__block_date{
         font-size: 0.85em;
