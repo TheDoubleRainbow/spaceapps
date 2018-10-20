@@ -15,7 +15,7 @@ export default new Vuex.Store({
       }).then(res => {
         state.nearest = res;
         console.log(res);
-        fetch('https://launchlibrary.net/1.4/launch/next/200').then(res => {
+        fetch('https://launchlibrary.net/1.4/launch/next/20').then(res => {
           return res.json();
         }).then(res => {
           state.apiData = res;

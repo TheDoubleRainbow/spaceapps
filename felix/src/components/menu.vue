@@ -3,7 +3,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-2 nav__name">
-                    <img class="nav__img" src="../assets/logo.svg" />
+                    <img class="nav__img" src="../assets/logo.png" />
                     <span>Linfo</span>
                 </div>
                 <div class="column is-6 nav__links">
