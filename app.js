@@ -27,7 +27,64 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.get('/cron', async (req, res) => {
+// app.get('/cron', async (req, res) => {
+//     //const launches = await (await fetch('https://launchlibrary.net/1.4/launch/next/20')).json().data
+//     //console.log(launches[0]);
+//     const launches = (await (await fetch('https://launchlibrary.net/1.4/launch/next/50')).json()).launches;
+//     let launch = launches[getRandomInt(0, launches.length)];
+//     let description = (launch.missions[0] || {description: ""}).description;
+//     let text = `<b>Do not miss upcoming launch</b>\n
+//     <a href="https://space-apps.herokuapp.com/#/launch/${launch.id}">${launch.name}</a>\n
+//     <i>${description}</i>
+//     ${launch.hashtag || ""}
+//     <a href="${launch.rocket.imageURL}">photo</a>`
+//     return bot.sendMessage("@felix_space", text, {parse_mode: "HTML", disable_web_page_preview: false});   
+
+// })
+
+app.get('/cronLaunching', async (req, res) => {
+    //const launches = await (await fetch('https://launchlibrary.net/1.4/launch/next/20')).json().data
+    //console.log(launches[0]);
+    const launches = (await (await fetch('https://launchlibrary.net/1.4/launch/next/1')).json()).launches;
+    let launch = launches[0];
+    if (Math.abs(new Date(launch.windowstart) - new Date()) < 300000) {
+        let description = (launch.missions[0] || {description: ""}).description;
+        let text = `<b>Rocket launch right now!</b>\n
+        <a href="https://space-apps.herokuapp.com/#/launch/${launch.id}">${launch.name}</a>\n
+        <i>${description}</i>
+        ${launch.hashtag || ""}
+        <a href="${launch.rocket.imageURL}">photo</a>`
+        return bot.sendMessage("@felix_space", text, {parse_mode: "HTML", disable_web_page_preview: false});  
+    } 
+    return;
+})
+
+app.get('/cronTodayLaunches', async (req, res) => {
+    //const launches = await (await fetch('https://launchlibrary.net/1.4/launch/next/20')).json().data
+    //console.log(launches[0]);
+    let date = new Date();
+    let stringDate = `${date.getFullYear()}-${('0' + date.getMonth() + 1).slice(-2)}-${('0' + date.getDate()).slice(-2)}`
+    const launches = (await (await fetch(`https://launchlibrary.net/1.4/launch/${stringDate}/${stringDate}`)).json()).launches;
+    if (launches.length > 0) {
+        let text = "<b>Today launches:</b>\n";
+        for(let i = 0; i < launches.length; i++) {
+            let launch = launches[0];
+            let description = (launch.missions[0] || {description: ""}).description;
+            text += `<a href="https://space-apps.herokuapp.com/#/launch/${launch.id}">${launch.name}</a>`
+        }
+        // let launch = launches[0];
+        // let description = (launch.missions[0] || {description: ""}).description;
+        // let text = `<b>Do not miss upcoming launch</b>\n
+        // <a href="https://space-apps.herokuapp.com/#/launch/${launch.id}">${launch.name}</a>\n
+        // <i>${description}</i>
+        // ${launch.hashtag || ""}
+        // <a href="${launch.rocket.imageURL}">photo</a>`
+        return bot.sendMessage("@felix_space", text, {parse_mode: "HTML", disable_web_page_preview: false});  
+    }
+    return; 
+})
+
+app.get('/cronRandomLaunch', async (req, res) => {
     //const launches = await (await fetch('https://launchlibrary.net/1.4/launch/next/20')).json().data
     //console.log(launches[0]);
     const launches = (await (await fetch('https://launchlibrary.net/1.4/launch/next/50')).json()).launches;
@@ -39,7 +96,6 @@ app.get('/cron', async (req, res) => {
     ${launch.hashtag || ""}
     <a href="${launch.rocket.imageURL}">photo</a>`
     return bot.sendMessage("@felix_space", text, {parse_mode: "HTML", disable_web_page_preview: false});   
-
 })
 
 //<code>inline fixed-width code</code>
