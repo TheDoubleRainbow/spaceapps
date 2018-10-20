@@ -30,6 +30,7 @@ export default {
 html{
   background: black url('assets/bg.jpg');
   background-size: cover;
+  background-attachment: fixed;
 }
 *{
   box-sizing: border-box;
