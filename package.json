@@ -1,0 +1,23 @@
+{
+  "name": "spaceapps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheDoubleRainbow/spaceapps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheDoubleRainbow/spaceapps/issues"
+  },
+  "homepage": "https://github.com/TheDoubleRainbow/spaceapps#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "firebase-admin": "^6.0.0"
+  }
+}
