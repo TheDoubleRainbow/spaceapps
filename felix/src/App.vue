@@ -6,11 +6,14 @@
 </template>
 
 <script>
-import topMenu from '@/components/menu'
+import topMenu from '@/components/menu';
 export default {
   name: 'app',
   components: {
     topMenu
+  },
+  created: function(){
+    this.$store.dispatch('getData');
   }
 }
 </script>

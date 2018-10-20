@@ -1,20 +1,49 @@
 <template>
     <div class="container">
         <div class="columns">
-            <div class="column is-6 is-offset-2 nearest">
+            <div v-if="nearest" class="column is-6 is-offset-2 nearest">
                 <div class="nearest__label">Nearest launch</div>
                 <div class="nearest__time">
                     <div class="nearest__time__timer">5d 22h 58m 69s</div>
-                    <div class="nearest__time__date">T-0: October 26, 2018 08:05:00 UTC</div>
+                    <div class="nearest__time__date">{{nearest.net}}</div>
                 </div>
                 <div class="nearest__name">
-                    Pegasus XL | Ionospheric Connection Explorer (ICON)
+                    {{nearest.name}}
                 </div>
                 <a href="#" class="nearest__more-info">More info</a>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'nearest',
+    data(){
+        return {
+            timer: ''
+        }
+    },
+    methods: {
+        getTimer(){
+
+        }
+    },
+    computed: {
+        nearest: function(){
+            if(this.$store.state.nearest){
+                return this.$store.state.nearest.launches[0]
+            }else{
+                return false;
+            }
+        }
+    },
+    created(){
+        
+    }
+}
+</script>
+
 
 <style lang="scss">
     .nearest{

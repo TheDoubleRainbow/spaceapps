@@ -15,7 +15,7 @@
                     
                 </div>
                 <div class="column is-3 nav__search">
-                    <input class="input" type="text" />
+                    <input placeholder="Search" class="input" type="text" />
                 </div>
             </div>
         </div>
@@ -55,6 +55,7 @@ export default {
     }
     .nav__search input{
         border-radius: 25px;
+        padding-left: 1.1em;
     }
 </style>    
 
