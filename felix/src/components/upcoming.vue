@@ -9,20 +9,20 @@
         </div>
         <div class="columns is-centered">
             <div class="column is-8">
-                <div class="upcoming__block columns">
+                <div class="upcoming__block columns" v-for="item in items" :key="item.id">
                     <div class="upcoming__block__img">
-                        <img src="https://s3.amazonaws.com/launchlibrary/RocketImages/H-IIA_2560.jpg" alt="rocket">
+                        <img :src="item.rocket.imageURL" alt="rocket">
                     </div>
                     <div class="upcoming__block__content">
                         <div class="upcoming__block_top">
-                            <p class="upcoming__block_name">Name</p>
-                            <p class="upcoming__block_date">date</p>
+                            <p class="upcoming__block_name">{{item.name}}</p>
+                            <p class="upcoming__block_date">{{item.windowstart}}</p>
                         </div>
                         <div class="upcoming__block__description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dolorum beatae nobis fugiat error itaque fuga facilis eos perspiciatis reprehenderit? Fugiat accusamus adipisci dicta numquam odit aliquid itaque inventore tempora!
+                            {{item.missions[0] ? item.missions[0].description : 'No description'}}
                         </div>
                         <div class="upcoming__block__footer">
-                            <p class="upcoming__block__time">5d 23h 40m</p>
+                            <p class="upcoming__block__time">{{item.windowstart | formatDate}}</p>
                             <a class="upcoming__block__more-info">More info</a>
                         </div>
                     </div>
@@ -100,3 +100,52 @@
 
 </style>
 
+<script>
+    import moment from 'moment'
+
+
+
+    export default {
+    name: 'upcoming',
+    data(){
+        return {
+            launchesTime:undefined,
+            
+        }
+    },
+    methods: {
+       
+    },
+    computed: {
+        items: function(){
+            if(this.$store.state.apiData){
+                return this.$store.state.apiData.launches;
+            }else{
+                return false;
+            }
+        }
+
+    },
+    created(){
+        setTimeout(
+            ()=>{
+        console.log(this.items)
+                
+            },
+            4000
+        )
+        console.log(this.items)
+    },
+    filters:{
+        formatDate: function(value) {
+            let now=new Date().getTime();
+            let launchTime=new Date(value).getTime();
+            if (value) {
+                return moment((new Date(launchTime-now)).toString()).format('DD[d] hh[h] mm[m] ss[s]')
+            }
+        }
+    
+    }
+};
+    
+</script>
