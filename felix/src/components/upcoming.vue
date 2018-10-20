@@ -73,6 +73,7 @@
     .upcoming__block_date{
         font-size: 0.85em;
         font-weight: 300;
+        padding-right: 1em;
     }
     .upcoming__block__description{
         font-size: 0.875em;
@@ -86,7 +87,14 @@
     }
     .upcoming__block__more-info{
         padding: 1em;
-        background: #161616;
+        transition-duration: .3s;
+        color: white;
+        margin-top: 0.5em;
+    }
+    .upcoming__block__more-info:hover{
+        color: white;
+        background: #232323;
+        border-radius: 8px;
     }
 
 
