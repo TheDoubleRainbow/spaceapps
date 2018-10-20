@@ -51,8 +51,8 @@ export default {
         setInterval(()=>{
             if(this.nearest){
                 let now=(new Date()).getTime();
-                let past=(new Date(this.nearest.net)).getTime();
-                this.timer=new Date(now - past);
+                let future=(new Date(this.nearest.net)).getTime();
+                this.timer=new Date(future - now);
                 this.viewTimer = moment((this.timer.toString()).toString()).format('DD[d] hh[h] mm[m] ss[s]');
             }
         }, 1000)
