@@ -30,8 +30,39 @@
         <div class="columns l__bottom-blocks">
             <div class="column is-8">
                 <div class="l__comments white">
-                   comments
+                    <div class="l__comments__heading">comments</div>  
+                    <form action="" class="comments__form">
+                        <div class="control">
+                            <input class="l__comments_input input" type="text" placeholder="Text input" name="nikName">
+                        </div>
+                        <div class="control">
+                            <input class="l__comments_input input" type="text" placeholder="Text input" name="message">
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button comments__submit">Submit</button>
+                            </div>
+                            <div class="control">
+                                <button class="button x comments__cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="l__comments__container">
+                        <div class="l__coments_item">
+                            <div class="l__comments__author">Naruto Uzumaki <span class="coments__published"> 2 days ago </span></div>
+                            <div class="l__coments__message">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae minima dolor aperiam architecto dolore fugiat odio? Similique modi quas neque odit! Eius sed, et fugit vel commodi reprehenderit dignissimos amet?
+                            </div>
+                        </div>
+                        <div class="l__coments_item">
+                            <div class="l__comments__author">Naruto Uzumaki <span class="coments__published"> 2 days ago </span></div>
+                            <div class="l__coments__message">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae minima dolor aperiam architecto dolore fugiat odio? Similique modi quas neque odit! Eius sed, et fugit vel commodi reprehenderit dignissimos amet?
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
             <div class="column is-4 l__sidebar-wrap">
                 <div class="l__sidebar white">
@@ -94,6 +125,44 @@
 }
 .l__bottom-blocks .l__sidebar-wrap{
     padding-left: 1.5em;
+}
+.l__comments{
+    padding: 1.5em 2em;
+}
+.l__comments__heading{
+    margin:1em 0;
+    font-size: 2em;
+    font-weight: 400;
+    font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;
+}
+.l__comments_input{
+    margin:.5em 0;
+}
+.comments__form>.field{
+    flex-direction: row-reverse;
+    margin-top: .5em;
+}
+.comments__submit{
+    background-color: #ffffff;
+    border-color: transparent;
+    color: #000;
+    border: 1px solid #131313;
+}
+.comments__cancel{
+    border:0;   
+    margin-right: 1.2em;
+}
+.l__coments_item{
+    margin-top:2em;
+}
+.l__comments__author{
+    font-size:1.4em;
+    font-weight: 400;
+    margin-bottom: .2em;
+}
+.coments__published{
+    font-size: 0.7em;
+    font-weight: lighter;
 }
 </style>
 
