@@ -15,15 +15,19 @@ const db = admin.database();
 //db.ref("debug").push("test")
 
 var app = express();
-app.use(bodyParser);
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/felix/dist'));
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-// });
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 
 app.get('/cron', (req, res) => {
+    console.log("cron");
     db.ref("debug").push("cron")
     res.json({status: "ok"});
 })
