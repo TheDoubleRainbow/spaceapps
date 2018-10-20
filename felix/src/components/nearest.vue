@@ -15,49 +15,49 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 
 export default {
-    name: 'nearest',
-    data(){
-        return {
-            viewTimer:undefined,
-            timer:undefined,
-        }
-    },
-    methods: {
-        getTimer(){
+  name: "nearest",
+  data() {
+    return {
+      viewTimer: undefined,
+      timer: undefined
+    };
+  },
+  methods: {
+    getTimer() {}
+  },
 
-        }
-    },
-
-
-    computed: {
-        nearest: function(){
-            if(this.$store.state.nearest){
-                return this.$store.state.nearest.launches[0]
-            }else{
-                return false;
-            }
-        }
-    },
-    created(){
-        if(this.nearest){
-            let now=(new Date()).getTime();
-            let past=(new Date(this.nearest.net)).getTime();
-            this.timer=new Date(now - past);
-            this.viewTimer = moment((this.timer.toString()).toString()).format('DD[d] hh[h] mm[m] ss[s]');
-        }
-        setInterval(()=>{
-            if(this.nearest){
-                let now=(new Date()).getTime();
-                let future=(new Date(this.nearest.net)).getTime();
-                this.timer=new Date(future - now);
-                this.viewTimer = moment((this.timer.toString()).toString()).format('DD[d] hh[h] mm[m] ss[s]');
-            }
-        }, 1000)
+  computed: {
+    nearest: function() {
+      if (this.$store.state.nearest) {
+        return this.$store.state.nearest.launches[0];
+      } else {
+        return false;
+      }
     }
-  
+  },
+  created() {
+    if (this.nearest) {
+      let now = new Date().getTime();
+      let past = new Date(this.nearest.net).getTime();
+      this.timer = new Date(now - past);
+      this.viewTimer = moment(this.timer.toString().toString()).format(
+        "DD[d] hh[h] mm[m] ss[s]"
+      );
+    }
+    setInterval(() => {
+      if (this.nearest) {
+        let now = new Date().getTime();
+        let future = new Date(this.nearest.net).getTime();
+        this.timer = new Date(future - now);
+        this.viewTimer = moment(this.timer.toString().toString()).format(
+          "DD[d] hh[h] mm[m] ss[s]"
+        );
+      }
+    }, 1000);
+  }
 };
 </script>
 

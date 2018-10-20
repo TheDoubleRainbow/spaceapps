@@ -23,7 +23,7 @@
                         </div>
                         <div class="upcoming__block__footer">
                             <p class="upcoming__block__time">{{item.windowstart | formatDate}}</p>
-                            <a class="upcoming__block__more-info">More info</a>
+                             <router-link :to="'/launch/' + item.id" class="upcoming__block__more-info">More info</router-link>
                         </div>
                     </div>
                 </div>
@@ -63,6 +63,7 @@
         background: #131313;
         padding: 0 2.5em;
         border-radius: 10px;
+        margin-top: 1.4em;
     }
     .upcoming__block__content{
         padding: 3.15em 0 3.15em 0;
@@ -141,7 +142,7 @@
             let now=new Date().getTime();
             let launchTime=new Date(value).getTime();
             if (value) {
-                return moment((new Date(launchTime-now)).toString()).format('DD[d] hh[h] mm[m] ss[s]')
+                return moment((new Date(launchTime-now)).toString()).format('DD[d] hh[h] mm[m]')
             }
         }
     
