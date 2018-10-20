@@ -57,10 +57,7 @@ export default {
             }
         }, 1000)
     }
-  },
-  created() {
-    console.log("sadas");
-  }
+  
 };
 </script>
 
