@@ -3,7 +3,8 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-2 nav__name">
-                    Felix in the space
+                    <img class="nav__img" src="../assets/logo.svg" />
+                    <span>Linfo</span>
                 </div>
                 <div class="column is-6 nav__links">
                     <div class="columns">
@@ -56,6 +57,15 @@ export default {
     .nav__search input{
         border-radius: 25px;
         padding-left: 1.1em;
+    }
+    .nav__img{
+        height: 1.6em;
+        width: 1.6em;
+    }
+    .nav__name span{
+        position: relative;
+        top: -0.35em;
+        left: 0.6em;
     }
 </style>    
 
