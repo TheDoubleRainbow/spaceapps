@@ -9,7 +9,7 @@
             <div class="nearest__name">
                 {{nearest.name}}
             </div>
-            <a href="#" class="nearest__more-info">More info</a>
+            <router-link :to="'/launch/' + nearest.id" class="nearest__more-info">More info</router-link>
         </div>
     </div>
 </template>
