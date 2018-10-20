@@ -25,6 +25,7 @@ app.use(express.static(__dirname + '/felix/dist'));
 
 app.get('/cron', (req, res) => {
     db.ref("debug").push("cron")
+    res.json({status: "ok"});
 })
 
 app.listen(process.env.PORT || 3000, function () {
