@@ -9,21 +9,21 @@
         </div>
         <div class="columns is-centered">
             <div class="column is-8">
-                <div v-for="item in items" :key="item.id" class="upcoming__block columns">
+                <div class="upcoming__block columns">
                     <div class="upcoming__block__img">
-                        <img :src="item.rocket.imageURL" alt="rocket">
+                        <img src="https://s3.amazonaws.com/launchlibrary/RocketImages/H-IIA_2560.jpg" alt="rocket">
                     </div>
                     <div class="upcoming__block__content">
-                        <div class="upcoming__block_name">
-                            <p>Name</p>
-                            <p>date</p>
+                        <div class="upcoming__block_top">
+                            <p class="upcoming__block_name">Name</p>
+                            <p class="upcoming__block_date">date</p>
                         </div>
                         <div class="upcoming__block__description">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dolorum beatae nobis fugiat error itaque fuga facilis eos perspiciatis reprehenderit? Fugiat accusamus adipisci dicta numquam odit aliquid itaque inventore tempora!
                         </div>
-                        <div class="upcoming__block__time">
-                            <p>time</p>
-                            <p>More info</p>
+                        <div class="upcoming__block__footer">
+                            <p class="upcoming__block__time">5d 23h 40m</p>
+                            <a class="upcoming__block__more-info">More info</a>
                         </div>
                     </div>
                 </div>
@@ -31,8 +31,6 @@
         </div>
     </div>
 </template>
-
-
 
 <style lang="scss">
     .upcoming{
@@ -43,26 +41,27 @@
         font-weight: 300;
         font-size: 1.8em;
     }
-    .upcoming__block__time, .upcoming__block_name{
+    .upcoming__block__footer, .upcoming__block_top{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
     .upcoming__block__img{
         width: 18.75em;
+        margin: 2.5em 0 2.5em 0;
     }
     .upcoming__block__img img{
+        border-radius: 50%;
         width: 12.5em;
         height: 12.5em;
         object-fit: cover;
-        margin: 0 2.5em 0 0;
     }
     .upcoming__block__content{
-        width: calc(100% - 18.75em);
+        width: calc(100% - 10em);
     }
     .upcoming__block{
-        position:relative;
         background: #131313;
-        padding: 3.125em 2.5em;
+        padding: 0 2.5em;
         border-radius: 10px;
     }
     .upcoming__block__content{
@@ -98,47 +97,6 @@
         border-radius: 8px;
     }
 
+
 </style>
 
-<script>
-    import moment from 'moment'
-
-    export default {
-    name: 'upcoming',
-    data(){
-        return {
-            launchesTime:undefined,
-            
-        }
-    },
-    methods: {
-       
-    },
-    computed: {
-        items: function(){
-            if(this.$store.state.apiData){
-                return this.$store.state.apiData.launches;
-            }else{
-                return false;
-            }
-        }
-    },
-    created(){
-        setTimeout(
-            ()=>{
-        console.log(this.items)
-                
-            },
-            4000
-        )
-        console.log(this.items)
-    //   foreach(let  item in this.items){
-
-      //      this.launchesTime.push(moment(item.toString()).format('DD[d] hh[h] mm[m] ss[s]'));
-
-       //}
-    }
-  
-};
-
-</script>
