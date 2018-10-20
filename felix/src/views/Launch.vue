@@ -18,12 +18,24 @@
                         </div>
                         <div class="is-12 l__main__bottom">
                             <div v-if="viewTimer" class="l__main__bottom__time">{{viewTimer}}</div>
-                            <div class="l__main__bottom__more">
+                            <!-- <div class="l__main__bottom__more">
                                 <span>Learn more: </span>
                                 <a href="#">sdasdsa asd</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns l__bottom-blocks">
+            <div class="column is-8">
+                <div class="l__comments white">
+                   comments
+                </div>
+            </div>
+            <div class="column is-4 l__sidebar-wrap">
+                <div class="l__sidebar white">
+                    sidebar
                 </div>
             </div>
         </div>
@@ -71,6 +83,17 @@
 .l__main__bottom{
     display: flex;
     justify-content: space-between;
+}
+.l__bottom-blocks .column{
+    padding: 0;
+}
+.l__bottom-blocks .white{
+    background: white;
+    border-radius: 10px;
+    margin-top: 1.5em;
+}
+.l__bottom-blocks .l__sidebar-wrap{
+    padding-left: 1.5em;
 }
 </style>
 
