@@ -3,7 +3,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-2 nav__name">
-                    Za VDV
+                    Felix in the space
                 </div>
                 <div class="column is-6 nav__links">
                     <div class="columns">

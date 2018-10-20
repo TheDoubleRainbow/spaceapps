@@ -25,7 +25,8 @@ export default {
   color: #2c3e50;
 }
 html{
-  background: black;
+  background: black url('assets/bg.jpg');
+  background-size: cover;
 }
 *{
   box-sizing: border-box;
