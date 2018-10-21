@@ -18,10 +18,18 @@
                         </div>
                         <div class="is-12 l__main__bottom">
                             <div v-if="viewTimer" class="l__main__bottom__time">{{viewTimer}}</div>
-                            <!-- <div class="l__main__bottom__more">
-                                <span>Learn more: </span>
-                                <a href="#">sdasdsa asd</a>
-                            </div> -->
+                            <div class="l__main__links__wraper">
+                                <div v-if="item.vidURLs.length > 0" class="l__main__bottom__more">
+                                    <span>Watch online: </span>
+                                    <a :href="item.vidURLs[0]">{{item.vidURLs[0].split('/')[2]}}</a>
+                                </div>
+                                <div v-if="item.missions[0]" class="l__main__bottom__more">
+                                    <div v-if="item.missions[0].wikiURL">
+                                        <span>Mission on wiki: </span>
+                                        <a :href="item.missions[0].wikiURL">{{item.missions[0].name}}</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -206,6 +214,12 @@
     object-fit: cover;
     border-radius: 3px;
     margin-top: 1em;
+}
+.l__main__links__wraper{
+    margin-top: 1em;
+}
+.launch{
+    margin-bottom: 2em;
 }
 </style>
 

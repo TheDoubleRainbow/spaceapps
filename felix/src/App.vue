@@ -31,6 +31,7 @@ html{
   background: black url('assets/bg.jpg');
   background-size: cover;
   background-attachment: fixed;
+  padding-bottom: 3em;
 }
 *{
   box-sizing: border-box;
