@@ -39,33 +39,27 @@
             <div class="column is-8">
                 <div class="l__comments white">
                     <div class="l__comments__heading">comments</div>  
-                    <form action="" class="comments__form">
+                    <form @submit.prevent="addComment()" action="" class="comments__form">
                         <div class="control">
-                            <input class="l__comments_input input" type="text" placeholder="Text input" name="nikName">
+                            <input class="l__comments_input input" type="text" placeholder="User name" ref="user" name="nikName">
                         </div>
                         <div class="control">
-                            <input class="l__comments_input input" type="text" placeholder="Text input" name="message">
+                            <input class="l__comments_input input" type="text" placeholder="Message" ref="message" name="message">
                         </div>
                         <div class="field is-grouped">
                             <div class="control">
-                                <button class="button comments__submit">Submit</button>
+                                <button class="button comments__submit">Send</button>
                             </div>
                             <div class="control">
                                 <button class="button x comments__cancel">Cancel</button>
                             </div>
                         </div>
                     </form>
-                    <div class="l__comments__container">
+                    <div class="l__comments__container" v-for="comment in comments">
                         <div class="l__coments_item">
-                            <div class="l__comments__author">Naruto Uzumaki <span class="coments__published"> 2 days ago </span></div>
+                            <div class="l__comments__author">{{comment.user}}<span class="coments__published">{{comment.created}}</span></div>
                             <div class="l__coments__message">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae minima dolor aperiam architecto dolore fugiat odio? Similique modi quas neque odit! Eius sed, et fugit vel commodi reprehenderit dignissimos amet?
-                            </div>
-                        </div>
-                        <div class="l__coments_item">
-                            <div class="l__comments__author">Naruto Uzumaki <span class="coments__published"> 2 days ago </span></div>
-                            <div class="l__coments__message">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae minima dolor aperiam architecto dolore fugiat odio? Similique modi quas neque odit! Eius sed, et fugit vel commodi reprehenderit dignissimos amet?
+                                {{comment.message}}
                             </div>
                         </div>
                     </div>
@@ -251,6 +245,7 @@
 
 <script>
 import moment from "moment";
+import { db } from '../main';
 
 export default {
   name: "launch",
@@ -260,8 +255,14 @@ export default {
       viewTimer: undefined,
       location: undefined,
       hotelsURL: undefined,
+      comments: [],
     };
   },
+    firestore () {
+        return {
+            comments: db.collection('comments').where("launchId", "==", `${this.$route.params.id}`)
+        }
+    },
   methods: {
     getData: function() {
       fetch(`https://launchlibrary.net/1.4/launch/${this.$route.params.id}`)
@@ -279,12 +280,19 @@ export default {
                 })
                 .then(res => {
                     this.hotelsURL = `https://www.google.com/maps/search/${res.results[0].formatted_address} hotels`;
-                    //console.log(res);
                 }
             );
           }
         });
     },
+    addComment: function(envent) {
+        db.collection('comments').add({
+            launchId: `${this.$route.params.id}`,
+            user: this.$refs.user.value,
+            message: this.$refs.message.value,
+            createdAt: new Date(),
+        })  
+    }
   },
   created() {
     this.getData();
