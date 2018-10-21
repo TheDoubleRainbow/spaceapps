@@ -18,10 +18,18 @@
                         </div>
                         <div class="is-12 l__main__bottom">
                             <div v-if="viewTimer" class="l__main__bottom__time">{{viewTimer}}</div>
-                            <!-- <div class="l__main__bottom__more">
-                                <span>Learn more: </span>
-                                <a href="#">sdasdsa asd</a>
-                            </div> -->
+                            <div class="l__main__links__wraper">
+                                <div v-if="item.vidURLs.length > 0" class="l__main__bottom__more">
+                                    <span>Watch online: </span>
+                                    <a :href="item.vidURLs[0]">{{item.vidURLs[0].split('/')[2]}}</a>
+                                </div>
+                                <div v-if="item.missions[0]" class="l__main__bottom__more">
+                                    <div v-if="item.missions[0].wikiURL">
+                                        <span>Mission on wiki: </span>
+                                        <a :href="item.missions[0].wikiURL">{{item.missions[0].name}}</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,7 +165,7 @@
     padding-left: 1.5em;
 }
 .l__comments{
-    padding: 1.5em 2em;
+    padding: 1.5em 3em;
 }
 .l__comments__heading{
     margin:1em 0;
@@ -167,6 +175,18 @@
 }
 .l__comments_input{
     margin:.5em 0;
+    border: 1px solid #131313;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    padding-left:.1em 
+}
+.l__comments_input::placeholder{
+    color:#131313;
+    font-style: 'Roboto', sans-serif;
+    opacity: .85;
 }
 .comments__form>.field{
     flex-direction: row-reverse;
@@ -184,6 +204,11 @@
 }
 .l__coments_item{
     margin-top:2em;
+    border: 1px solid black;
+    border-right: transparent;
+    border-bottom: transparent;
+    border-top: transparent;
+    padding-left: 1em;
 }
 .l__comments__author{
     font-size:1.4em;
@@ -209,6 +234,17 @@
     object-fit: cover;
     border-radius: 3px;
     margin-top: 1em;
+}
+.l__main__links__wraper{
+    margin-top: 1em;
+}
+.launch{
+    margin-bottom: 2em;
+}
+.comments__form{
+    border: 1px solid #131313;
+    border-radius: 10px;
+    padding: 2em 2.5em;
 }
 </style>
 
