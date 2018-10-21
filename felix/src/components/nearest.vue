@@ -3,7 +3,7 @@
             <div v-if="nearest" class="column is-6 is-offset-2 nearest">
                 <div class="nearest__label">Nearest launch</div>
                 <div class="nearest__time">
-                    <div class="nearest__time__timer">{{viewTimer}}</div>
+                    <div class="nearest__time__timer">{{viewTimer? viewTimer : "00d 00h 00m 00s"}}</div>
                     <div class="nearest__time__date">{{nearest.net}}</div>
                 </div>
             <div class="nearest__name">
