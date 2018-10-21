@@ -38,7 +38,7 @@
         <div class="columns l__bottom-blocks">
             <div class="column is-8">
                 <div class="l__comments white">
-                    <div class="l__comments__heading">comments</div>  
+                    <div class="l__comments__heading">Comments</div>  
                     <form @submit.prevent="addComment()" action="" class="comments__form">
                         <div class="control">
                             <input class="l__comments_input input" type="text" placeholder="User name" ref="user" name="nikName">
@@ -55,9 +55,9 @@
                             </div>
                         </div>
                     </form>
-                    <div class="l__comments__container" v-for="comment in comments">
+                    <div class="l__comments__container" v-for="comment in comments" :key="comment.created">
                         <div class="l__coments_item">
-                            <div class="l__comments__author">{{comment.user}}<span class="coments__published">{{comment.created}}</span></div>
+                            <div class="l__comments__author">{{comment.user}}</div>
                             <div class="l__coments__message">
                                 {{comment.message}}
                             </div>
@@ -157,7 +157,8 @@
     padding-left: 1.5em;
 }
 .l__comments{
-    padding: 1.5em 3em;
+    padding: 0.1em 1.5em;
+    padding-bottom: 2em;
 }
 .l__comments__heading{
     margin:1em 0;
@@ -249,6 +250,9 @@
 .location__links a:hover {
     background: whitesmoke;
     border-radius: 5px;
+}
+.l__comments__heading{
+    font-size: 1.6em;
 }
 </style>
 
