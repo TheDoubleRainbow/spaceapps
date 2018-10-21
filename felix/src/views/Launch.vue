@@ -75,6 +75,9 @@
                             <div class="location__links">
                                 <a :href="item.location.pads[0].mapURL" target="_blank">View on map</a>
                             </div>
+                            <div class="location__links">
+                                <a :href="hotelsURL" target="_blank">View hotels</a>
+                            </div>
                         </div>
                         <div v-if="!location">
                             {{item.location.name}}
@@ -219,7 +222,8 @@ export default {
     return {
       item: undefined,
       viewTimer: undefined,
-      location: undefined
+      location: undefined,
+      hotelsURL: undefined,
     };
   },
   methods: {
@@ -231,10 +235,20 @@ export default {
         .then(res => {
           this.item = res.launches[0];
           if(this.item.location.pads.length > 0){
-              this.location = true;
+            this.location = true;
+            let pad = this.item.location.pads[0]
+            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pad.latitude},${pad.longitude}&key=AIzaSyB9mTKYAQc3t2Zu8xI8fylHqOp4xSHj_AE`)
+            .then(res => {
+                    return res.json();
+                })
+                .then(res => {
+                    this.hotelsURL = `https://www.google.com/maps/search/${res.results[0].formatted_address} hotels`;
+                    //console.log(res);
+                }
+            );
           }
         });
-    }
+    },
   },
   created() {
     this.getData();

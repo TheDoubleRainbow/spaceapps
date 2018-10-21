@@ -21,6 +21,12 @@
                         <div class="upcoming__block__description">
                             {{item.missions[0] ? item.missions[0].description : 'No description'}}
                         </div>
+                         <!--div class="upcoming__block__location">
+                            <a :href="item.location.pads[0].mapURL">{{item.location.pads[0].name}}</a>
+                        </div>
+                        <div class="upcoming__block__location">
+                            <a :href="`https://www.google.com.ph/maps/search/hotels/@${item.location.pads[0].latitude},${item.location.pads[0].longitude}`">{{item.location.pads[0].name}}</a>
+                        </div-->
                         <div class="upcoming__block__footer">
                             <p class="upcoming__block__time">{{item.windowstart | formatDate}}</p>
                              <router-link :to="'/launch/' + item.id" class="upcoming__block__more-info">More info</router-link>
@@ -77,6 +83,11 @@
         padding-right: 1em;
     }
     .upcoming__block__description{
+        font-size: 0.875em;
+        font-weight: 300;
+        margin-top: 1.2em;
+    }
+    .upcoming__block__location{
         font-size: 0.875em;
         font-weight: 300;
         margin-top: 1.2em;
