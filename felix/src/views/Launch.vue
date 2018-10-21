@@ -21,12 +21,12 @@
                             <div class="l__main__links__wraper">
                                 <div v-if="item.vidURLs.length > 0" class="l__main__bottom__more">
                                     <span>Watch online: </span>
-                                    <a :href="item.vidURLs[0]">{{item.vidURLs[0].split('/')[2]}}</a>
+                                    <a target="_blank" :href="item.vidURLs[0]">{{item.vidURLs[0].split('/')[2]}}</a>
                                 </div>
                                 <div v-if="item.missions[0]" class="l__main__bottom__more">
                                     <div v-if="item.missions[0].wikiURL">
                                         <span>Mission on wiki: </span>
-                                        <a :href="item.missions[0].wikiURL">{{item.missions[0].name}}</a>
+                                        <a target="_blank" :href="item.missions[0].wikiURL">{{item.missions[0].name}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +76,6 @@
                             <div class="location__name">{{item.location.pads[0].name}}</div>
                             <div class="location__links">
                                 <a :href="item.location.pads[0].mapURL" target="_blank">View on map</a>
-                            </div>
-                            <div class="location__links">
                                 <a :href="hotelsURL" target="_blank">View hotels</a>
                             </div>
                         </div>
@@ -239,6 +237,18 @@
     border: 1px solid #131313;
     border-radius: 10px;
     padding: 2em 2.5em;
+}
+.location__links{
+    display: flex;
+    justify-content: space-around;
+}
+.location__links a{
+    transition-duration: .3s;
+    padding: 1em 3em;
+}
+.location__links a:hover {
+    background: whitesmoke;
+    border-radius: 5px;
 }
 </style>
 

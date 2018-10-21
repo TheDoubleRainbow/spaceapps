@@ -9,7 +9,7 @@
                 <div class="column is-6 nav__links">
                     <div class="columns">
                         <router-link class="column is-2 nav__link" to="/"><span>Home</span></router-link>
-                        <router-link class="column is-2 nav__link" to="/about"><span>About</span></router-link>
+                        <router-link class="column is-4 nav__link" to="/about"><img src="../assets/felix.png" class="menu__felix" /> <span class="felix__span">Join Felix on Telegram</span></router-link>
                     </div>
                 </div>
                 <div class="column is-1 nav__separator">
@@ -66,6 +66,18 @@ export default {
         position: relative;
         top: -0.35em;
         left: 0.6em;
+    }
+    .nav__link{
+        display: inline-block;
+    }
+    .menu__felix{
+        width: 2em;
+        height: 2em;
+    }
+    .felix__span{
+        position: relative;
+        top: -0.8em;
+        left: 1em;
     }
 </style>    
 
