@@ -162,7 +162,7 @@
     padding-left: 1.5em;
 }
 .l__comments{
-    padding: 1.5em 2em;
+    padding: 1.5em 3em;
 }
 .l__comments__heading{
     margin:1em 0;
@@ -172,6 +172,18 @@
 }
 .l__comments_input{
     margin:.5em 0;
+    border: 1px solid #131313;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    padding-left:.1em 
+}
+.l__comments_input::placeholder{
+    color:#131313;
+    font-style: 'Roboto', sans-serif;
+    opacity: .85;
 }
 .comments__form>.field{
     flex-direction: row-reverse;
@@ -189,6 +201,11 @@
 }
 .l__coments_item{
     margin-top:2em;
+    border: 1px solid black;
+    border-right: transparent;
+    border-bottom: transparent;
+    border-top: transparent;
+    padding-left: 1em;
 }
 .l__comments__author{
     font-size:1.4em;
@@ -220,6 +237,11 @@
 }
 .launch{
     margin-bottom: 2em;
+}
+.comments__form{
+    border: 1px solid #131313;
+    border-radius: 10px;
+    padding: 2em 2.5em;
 }
 </style>
 
