@@ -9,7 +9,7 @@
                 <div class="column is-6 nav__links">
                     <div class="columns">
                         <router-link class="column is-2 nav__link" to="/"><span>Home</span></router-link>
-                        <router-link class="column is-2 nav__link" to="/about"><span>About</span></router-link>
+                        <router-link class="column is-4 nav__link" to="/about"><span>Telegram bot</span></router-link>
                     </div>
                 </div>
                 <div class="column is-1 nav__separator">
