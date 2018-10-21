@@ -65,8 +65,35 @@
                 
             </div>
             <div class="column is-4 l__sidebar-wrap">
-                <div class="l__sidebar white">
-                    sidebar
+                <div v-if="location || this.location.name" class="l__sidebar white">
+                    <div class="sidebar__top">
+                        Location
+                    </div>
+                    <div class="sidebar__body">
+                        <div v-if="location">
+                            <div class="location__name">{{item.location.pads[0].name}}</div>
+                            <div class="location__links">
+                                <a :href="item.location.pads[0].mapURL" target="_blank">View on map</a>
+                            </div>
+                        </div>
+                        <div v-if="!location">
+                            {{item.location.name}}
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.rocket" class="l__sidebar white">
+                    <div class="sidebar__top">
+                        Rocket
+                    </div>
+                    <div class="sidebar__body">
+                        <div>
+                            <img class="sidebar__image" :src="item.rocket.imageURL" />
+                            <div class="location__name">{{item.rocket.name}}</div>
+                            <div class="location__links">
+                                <a v-if="item.rocket.wikiURL" :href="item.rocket.wikiURL" target="_blank">View on wiki</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,6 +191,22 @@
     font-size: 0.7em;
     font-weight: lighter;
 }
+.l__sidebar{
+    padding: 1em;
+    text-align: center;
+}
+.sidebar__top{
+    font-size: 1.6em;
+}
+.location__name{
+    margin: 0.8em 0.8em;
+}
+.sidebar__image{
+    max-height: 24em;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-top: 1em;
+}
 </style>
 
 
@@ -175,7 +218,8 @@ export default {
   data() {
     return {
       item: undefined,
-      viewTimer: undefined
+      viewTimer: undefined,
+      location: undefined
     };
   },
   methods: {
@@ -186,6 +230,9 @@ export default {
         })
         .then(res => {
           this.item = res.launches[0];
+          if(this.item.location.pads.length > 0){
+              this.location = true;
+          }
         });
     }
   },
